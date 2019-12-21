@@ -7,6 +7,9 @@
 # @lc code=start
 class Solution:
     def threeSum(self, nums: List[int]) -> List[List[int]]:
+        nums.sort()
+        if nums[0] >= 0:
+            return []
         
 # @lc code=end
 
