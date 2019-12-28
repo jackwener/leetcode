@@ -47,15 +47,17 @@ class MinStack:
 
     def push(self, x):
         self.data.append(x)
+        # 关键 1 和关键 2
         if len(self.helper) == 0 or x <= self.helper[-1]:
             self.helper.append(x)
-        else:
-            self.helper.append(self.helper[-1])
 
     def pop(self):
-        if self.data:
+        # 关键 3：【注意】不论怎么样，数据栈都要 pop 出元素
+        top = self.data.pop()
+
+        if self.helper and top == self.helper[-1]:
             self.helper.pop()
-            return self.data.pop()
+        return top
 
     def top(self):
         if self.data:
@@ -64,6 +66,8 @@ class MinStack:
     def getMin(self):
         if self.helper:
             return self.helper[-1]
+
+
 
 
 
