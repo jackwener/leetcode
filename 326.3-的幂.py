@@ -44,6 +44,12 @@
 # @lc code=start
 class Solution:
     def isPowerOfThree(self, n: int) -> bool:
-        
+        while n >= 3:
+            if n % 3 != 0:
+                return False
+            else:
+                n /= 3
+        if n == 1:return True
+        else: return False
 # @lc code=end
 
