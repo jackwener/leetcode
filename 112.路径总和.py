@@ -43,14 +43,13 @@
 
 class Solution:
     def hasPathSum(self, root: TreeNode, sum: int) -> bool:
-        if root == None:
+        if not root:
             return False
-        if root.left == None and root.right == None:
-            return sum == root.val
-        if root.left != None and root.right == None:
-            return self.hasPathSum(root.left,sum-root.val)
-        if root.left == None and root.right != None:
-            return self.hasPathSum(root.right,sum-root.val)
-        return self.hasPathSum(root.left,sum-root.val) or self.hasPathSum(root.right,sum-root.val)
+
+        sum -= root.val
+        if not root.left and not root.right:  # if reach a leaf
+            return sum == 0
+        return self.hasPathSum(root.left, sum) or self.hasPathSum(root.right, sum)
+
 # @lc code=end
 
