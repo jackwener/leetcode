@@ -38,5 +38,15 @@
 # @lc code=start
 class Solution:
     def plusOne(self, digits: List[int]) -> List[int]:
+        length = len(digits)
+        tail = length - 1
+        while digits[tail] == 9:
+            digits[tail] = 0
+            tail -= 1
+            if tail == -1:
+                digits.insert(0,1)
+                return digits
+        digits[tail] += 1
+        return digits
 # @lc code=end
 
