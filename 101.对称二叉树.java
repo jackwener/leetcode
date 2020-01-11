@@ -51,7 +51,18 @@
  */
 class Solution {
     public boolean isSymmetric(TreeNode root) {
-        
+        if(root == null) return true;
+        return isMirror(root.left, root.right);
+    }
+
+    public boolean isMirror(TreeNode nodeOne, TreeNode nodeTwo){
+        if (nodeOne == null && nodeTwo == null) return true;
+        if (nodeOne == null || nodeTwo == null) return false;
+
+        if(nodeOne.val == nodeTwo.val){
+            return isMirror(nodeOne.left, nodeTwo.right) && isMirror(nodeOne.right, nodeTwo.left);
+        }
+        return false;
     }
 }
 // @lc code=end
