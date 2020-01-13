@@ -66,17 +66,32 @@
  * @return {number}
  */
 var removeElement = function(nums, val) {
-    num = 0
-    for(i = 0; i < nums.length; i++){
-        if(nums[i]===val){
-            num += 1
-            continue
+    // 效率不高，注意到结果不看顺序，所以可以通过交换做
+    // num = 0
+    // for(i = 0; i < nums.length; i++){
+    //     if(nums[i]===val){
+    //         num += 1
+    //         continue
+    //     }
+    //     if(num != 0) {
+    //         nums[i-num]=nums[i]
+    //     } 
+    // }
+    // return nums.length - num
+
+    i = 0;
+    end = nums.length;
+    while (i < end) {
+        if (nums[i] == val) {
+            nums[i] = nums[end - 1];
+            // reduce array size by one
+            end--;
+        } else {
+            i++;
         }
-        if(num != 0) {
-            nums[i-num]=nums[i]
-        } 
     }
-    return nums.length - num
+    return n;
+
 };
 // @lc code=end
 
