@@ -7,6 +7,7 @@
 # @lc code=start
 class Solution:
     def divide(self, dividend: int, divisor: int) -> int:
-        
+        num = 2
+        while()
 # @lc code=end
 
