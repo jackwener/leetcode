@@ -50,6 +50,5 @@ class Solution:
                 else:
                     res=max(res,i-stack[-1])
         return res
-          
 # @lc code=end
 
