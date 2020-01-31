@@ -39,6 +39,29 @@
 # @lc code=start
 class Solution:
     def multiply(self, num1: str, num2: str) -> str:
+        len_one = len(num1)
+        len_two = len(num2)
+        list = [0]*(len_one+len_two)
+
+        for i in range(1,len_one+1):
+            num1Val = int(num1[-i]);
+            for j in range(1,len_two+1):
+                num2Val = int(num2[-j])
+                sum = list[-(i + j - 1)] + num1Val * num2Val
+                list[-(i + j - 1)] = sum % 10 
+                list[-(i + j)] += sum // 10
+
+
+        result = ""
+        start = len_one+len_two-1
+        for i in range(len_one+len_two):
+            if list[i] != 0:
+                start = i
+                break
         
+        for i in range(start,len_one+len_two):
+            result += str(list[i])
+
+        return result
 # @lc code=end
 
