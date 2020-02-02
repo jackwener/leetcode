@@ -31,6 +31,7 @@
 # @lc code=start
 class Solution:
     def maxSubArray(self, nums: List[int]) -> int:
+        '''method 1 dp
         size = len(nums)
         dp = [0]*size
         res = nums[0]
@@ -38,5 +39,15 @@ class Solution:
             dp[i]=max(dp[i-1],0)+nums[i]
             res=max(dp[i],res)
         return res
+        '''
+        ans = nums[-1]
+        sum = 0
+        for num in nums:
+            if sum < 0:
+                sum = num
+            else:
+                sum += num
+            ans = max(sum,ans)
+        return ans
 # @lc code=end
 
