@@ -42,6 +42,10 @@
 # @lc code=start
 class Solution:
     def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
-        
+        l = len(matrix)
+        c = len(matrix[0])
+        def helper(line,column):
+            tmp_list = []
+            tmp_list += matrix[line][column:c-column]
 # @lc code=end
 
