@@ -36,6 +36,20 @@
 # @lc code=start
 class Solution:
     def minimumTotal(self, triangle: List[List[int]]) -> int:
-        
+        m = len(triangle)
+        n = len(triangle[-1])
+        for i in range(1,m):
+            for j in range(len(triangle[i])):
+                if j == 0:
+                    triangle[i][j] += triangle[i-1][0]
+                elif j == len(triangle[i])-1:
+                    triangle[i][j] += triangle[i-1][j-1]
+                else:
+                    triangle[i][j] += min(triangle[i-1][j-1],triangle[i-1][j])
+        res = triangle[-1][0]
+        for item in triangle[-1]:
+            res = min(res,item)
+        return res
+
 # @lc code=end
 
