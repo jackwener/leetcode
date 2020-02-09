@@ -13,6 +13,21 @@
 
 class Solution:
     def isPalindrome(self, head: ListNode) -> bool:
-        
+        ''' 
+        copy method
+    
+        nums = []
+        while head != None:
+            nums.append(head.val)
+            head  = head.next
+        left = 0
+        right = len(nums)-1
+        while left < right :
+            if nums[left] != nums[right]:
+                return False
+            else:
+                left, right = left + 1, right - 1
+        return True
+        '''
 # @lc code=end
 
