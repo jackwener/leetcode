@@ -50,6 +50,15 @@ class Solution(object):
         :type root: TreeNode
         :rtype: List[List[int]]
         """
+        res = []
+        def order(node, level):
+            if not node: return 
+            if len(res) - 1 < level: res.append([])
+            res[level].append(node.val)
+            order(node.left,level+1)
+            order(node.right,level+1)
+        order(root, 0)
+        return res
         
 # @lc code=end
 
