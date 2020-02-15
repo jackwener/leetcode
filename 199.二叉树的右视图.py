@@ -13,20 +13,16 @@
 #         self.right = None
 
 class Solution:
+    def __init__(self):
+        self.res = []
     def rightSideView(self, root: TreeNode) -> List[int]:
-        res = []
-        if not root:
-            return []
-        res.append(root.val)
-        if not root.right:
-            res += self.rightSideView(root.right)
-        elif root.left:
-            res += self.rightSideView(root.left)
-        else:
-            return [root.val]
-        
-        return self.rightSideView(root)
-
+        def helper(node, level):
+            if not node: return
+            if level == len(self.res): self.res.append(node.val)
+            helper(node.right,level+1)
+            helper(node.left,level+1)
+        helper(root, 0)
+        return self.res
             
 # @lc code=end
 

@@ -64,6 +64,23 @@ class Node:
 """
 class Solution:
     def connect(self, root: 'Node') -> 'Node':
+        if not root : return None
+        level_first_node = root
+        while level_first_node.left :
+            head = level_first_node
+
+            while head:
+                head.left.next = head.right
+
+                if head.next:
+                    head.right.next = head.next.left
+
+                head = head.next
+
+            level_first_node = level_first_node.left
+        return root
+
+
         
 # @lc code=end
 
