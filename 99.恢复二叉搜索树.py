@@ -72,10 +72,28 @@
 #         self.right = None
 
 class Solution:
+    def __init__(self):
+        self.first = None
+        self.second = None
+        self.pre = TreeNode(float("-inf"))
+
     def recoverTree(self, root: TreeNode) -> None:
         """
         Do not return anything, modify root in-place instead.
         """
+        def in_order(node):
+            if not node : return
+            in_order(node.left)
+            if self.first == None and self.pre.val >= node.val:
+                self.first = self.pre
+            if self.first and self.pre.val >= node.val:
+                self.second = node
+
+            self.pre = node
+            in_order(node.right)
         
+        in_order(root)
+
+        self.first.val, self.second.val = self.second.val, self.first.val
 # @lc code=end
 
