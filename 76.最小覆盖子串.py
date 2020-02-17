@@ -32,6 +32,24 @@
 # @lc code=start
 class Solution:
     def minWindow(self, s: str, t: str) -> str:
-        
+        from collections import Counter
+        count = Counter(t)
+        left = 0
+        n = 0
+        res_len = float('inf')
+        ans = ""
+        for right, char in enumerate(s):
+            if char not in count: continue
+            count[char] -= 1
+            if count[char] == 0: n += 1
+            while s[left] not in count or count[s[left]] < 0:
+                if s[left] in count: count[s[left]] += 1
+                left += 1
+            if n == len(count):
+                if not ans or len(ans) > right - left + 1:
+                    ans = s[left: right+1]
+
+        return ans
+
 # @lc code=end
 
