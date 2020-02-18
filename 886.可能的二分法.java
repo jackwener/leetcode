@@ -6,12 +6,10 @@
 
 // @lc code=start
 class Solution {
-    int N;  //共多少人
     int[] father;   //并查集
-    public boolean possibleBipartition(int _N, int[][] dl) {
-        N = _N+1;   
-        father = new int[N*2+5];    //开两倍的数组
-        for(int i = 1; i < N*2+5; i++) //初始化并查集
+    public boolean possibleBipartition(int N, int[][] dl) {
+        father = new int[N*2+1];    //开两倍的数组
+        for(int i = 1; i < N*2+1; i++) //初始化并查集
             father[i] = i;
         for(int i = 0; i < dl.length; i++){
             int x = find(dl[i][0]); //查找自己的根节点
