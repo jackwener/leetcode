@@ -21,7 +21,7 @@ class Solution {
         }
 
         for (int len = 1; len <= n - 2; len++) {
-            for (int i = 1; i <= n - 2 - len ; i++) {
+            for (int i = 1; i <= n - 2 - len + 1 ; i++) {
                 int j = i + len - 1;
                 dp[i][j] = Integer.MIN_VALUE;
                 //枚举中间的气球
@@ -33,6 +33,8 @@ class Solution {
         return dp[1][n - 2];
     }
 }
+
+
 
 
 // @lc code=end
