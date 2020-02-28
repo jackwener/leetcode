@@ -28,6 +28,35 @@
 # @lc code=start
 class Solution:
     def longestConsecutive(self, nums: List[int]) -> int:
-        
+
+        class UnionFind():
+            def __init__(self):
+                self.father = {}
+            
+            def find(self, x):
+                if self.father[x] != x:
+                    self.father[x] = self.find(self.father[x])
+                return self.father[x]
+
+            def union(self, x):
+                self.father[x] = x
+                if x - 1 in self.father:
+                    self.father[x - 1] = x
+                if x + 1 in self.father:
+                    self.father[x] = x + 1
+            
+        uf = UnionFind()
+        for num in nums:
+            uf.union(num)
+
+        max_l = 0
+        for num in nums:
+            root = uf.find(num)
+            l = root - num + 1
+            if l > max_l:
+                max_l = l
+
+        return max_l
+
 # @lc code=end
 
