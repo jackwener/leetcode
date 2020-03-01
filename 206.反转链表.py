@@ -13,27 +13,27 @@
 
 class Solution:
     def reverseList(self, head: ListNode) -> ListNode:
-        # pre = None
-        # cur = head
-        # while cur:
-        #     tmp = cur.next
-        #     cur.next = pre
-            
-        #     pre = cur
-        #     cur = tmp        
-        # return pre
+        pre = None
+        cur = head
+        while cur:
+            tmp = cur.next
+            cur.next = pre
+            pre = cur
+            cur = tmp
+        return pre
+
 
         '''
         method 2
         '''
-        if head == None:
-            return None
-        if  head.next == None :
-            return head
-        p = self.reverseList(head.next)
-        head.next.next = head
-        head.next = None
-        return p
+        # if head == None:
+        #     return None
+        # if  head.next == None :
+        #     return head
+        # p = self.reverseList(head.next)
+        # head.next.next = head
+        # head.next = None
+        # return p
 
 
 # @lc code=end
