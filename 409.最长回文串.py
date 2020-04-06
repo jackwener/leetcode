@@ -6,14 +6,14 @@
 
 # @lc code=start
 class Solution:
-    def longestPalindrome(self, s):
-        ans = 0
-        count = collections.Counter(s)
-        for v in count.values():
-            ans += v // 2 * 2
-            if ans % 2 == 0 and v % 2 == 1:
-                ans += 1
-        return ans
-
+    def longestPalindrome(self, s: str) -> int:
+        from collections import Counter
+        c = Counter(s)
+        res = 0
+        flag = False
+        for v in c.values():
+            if v % 2 == 1: flag = True
+            res += v // 2 * 2
+        return res + 1 if flag else res
 # @lc code=end
 
