@@ -43,8 +43,39 @@
  * }
  */
 class Solution {
+    // public TreeNode convertBST(TreeNode root) {
+    //     Stack<TreeNode> stack = new Stack<>();
+    //     TreeNode cur = root;
+    //     while(cur != null) {
+    //         stack.push(cur);
+    //         cur = cur.right;
+    //     }
+
+    //     int sumTmp = 0;
+    //     while(!stack.empty()) {
+    //         cur = stack.pop();
+    //         sumTmp += cur.val;
+    //         cur.val = sumTmp;
+
+    //         cur = cur.left;
+    //         while(cur != null) {
+    //             stack.push(cur);
+    //             cur = cur.right;
+    //         }
+    //     }
+
+    //     return root;
+    // }
     public TreeNode convertBST(TreeNode root) {
-        
+        after(root, 0);
+        return root;
+    }
+
+    public int after(TreeNode node, Integer parent) {
+        if (node == null) return parent;
+        int right = after(node.right, parent);
+        node.val = node.val + right;
+        return after(node.left, node.val);
     }
 }
 // @lc code=end
