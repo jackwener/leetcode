@@ -22,7 +22,21 @@
  */
 class Solution {
     public TreeNode pruneTree(TreeNode root) {
-        
+        boolean result = helper(root);
+        return result == true? root: null;
+    }
+
+    public boolean helper(TreeNode root) {
+        if(root == null) return false;
+
+        if(helper(root.left) == false) {
+            root.left = null;
+        }
+        if(helper(root.right) == false) {
+            root.right = null;
+        }
+
+        return root.val == 1 || helper(root.left) || helper(root.right);
     }
 }
 // @lc code=end
