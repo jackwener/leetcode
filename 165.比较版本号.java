@@ -19,8 +19,6 @@ class Solution {
                 j++;
             }
 
-            System.out.printf("%d %d", num1, num2);
-
             if (num1 != num2) {
                 return num1 > num2 ? 1 : -1;
             } else {
